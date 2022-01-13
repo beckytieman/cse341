@@ -1,0 +1,23 @@
+{
+  "name": "cse341",
+  "version": "1.0.0",
+  "description": "cse341",
+  "main": "first-app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon first-app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beckytieman/cse341.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/beckytieman/cse341/issues"
+  },
+  "homepage": "https://github.com/beckytieman/cse341#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
