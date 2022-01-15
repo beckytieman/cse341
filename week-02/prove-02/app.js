@@ -5,13 +5,16 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
-const indexRoutes = require('./routes/index');
+app.set('view engine', 'ejs');
+app.set('views', 'views');
+
+const indexData = require('./routes/index');
 const usersRoutes = require('./routes/users');
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')))
 
-app.use(indexRoutes);
+app.use(indexData.routes);
 app.use(usersRoutes);
 
 app.use((req, res, next) => {

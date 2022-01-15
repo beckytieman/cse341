@@ -3,11 +3,17 @@ const path = require('path');
 const express = require('express');
 
 const rootDir = require('../util/path');
+const indexData = require('./index');
 
 const router = express.Router();
 
 router.get('/users', (req, res, next) => {
-    res.sendFile(path.join(rootDir, 'views', 'users.html'));
+    const users = indexData.users;
+    res.render('users', {
+        users: users,
+        pageTitle: 'Users',
+        path: '/users'
+    });
 });
 
 module.exports = router;

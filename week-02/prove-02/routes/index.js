@@ -6,9 +6,19 @@ const rootDir = require('../util/path');
 
 const router = express.Router();
 
-// /admin/add-product
+const users = [];
+
 router.get('/', (req, res, next) => {
-    res.sendFile(path.join(rootDir, 'views', 'index.html'));
+    res.render('index', {
+        pageTitle: 'Add User',
+        path: '/',
+    });
 });
 
-module.exports = router;
+router.post('/add-user', (req, res, next) => {
+    users.push({username: req.body.username});
+    res.redirect('/users');
+})
+
+exports.routes = router;
+exports.users = users;
