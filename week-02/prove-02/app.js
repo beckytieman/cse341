@@ -1,15 +1,21 @@
+const path = require('path');
+
 const express = require('express');
+const bodyParser = require('body-parser');
 
 const app = express();
 
-app.use('/users', (req, res, next) => {
-    console.log('In the Users middleware');
-    res.send('<h1>User Page</h1>');
-});
+const indexRoutes = require('./routes/index');
+const usersRoutes = require('./routes/users');
 
-app.use('/', (req, res, next) => {
-    console.log('In the default "/" middleware');
-    res.send('<h1>Default Page</h1>');
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(express.static(path.join(__dirname, 'public')))
+
+app.use(indexRoutes);
+app.use(usersRoutes);
+
+app.use((req, res, next) => {
+    res.status(404).sendFile(path.join(__dirname, 'views', '404.html'));
 });
 
 app.listen(3000);
