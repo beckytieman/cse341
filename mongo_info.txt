@@ -1,0 +1,4 @@
+user: BTieman
+pass: wVMtYy1r23ZMxURA
+
+SRV address: mongodb+srv://BTieman:<password>@cluster0.xmdot.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
