@@ -7,7 +7,7 @@ const corsOptions = {
   origin: "https://cse341-btieman.herokuapp.com/",
   optionsSuccessStatus: 200
 };
-app.use(cors(corsOptions));
+
 
 const options = {
   useUnifiedTopology: true,
@@ -51,6 +51,7 @@ app.use(shopRoutes);
 
 app.use(errorController.get404);
 
+app.use(cors(corsOptions));
 // mongoose
 //   .connect('mongodb+srv://BTieman:wVMtYy1r23ZMxURA@cluster0.xmdot.mongodb.net/shop?retryWrites=true&w=majority')
 //   .then(result => {
