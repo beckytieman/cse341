@@ -1,5 +1,5 @@
 const path = require('path');
-const PATH = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
 const cors = require('cors');
 
