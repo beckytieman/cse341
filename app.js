@@ -91,7 +91,7 @@ app.get('/500,', errorController.get500);
 app.use(errorController.get404);
 
 app.use((error, reg, res, next) => {
-   res.redirect('/500');
+   res.render('/500');
   // res.status(500).render('500', { pageTitle: 'Error!', path: '/500',
   // isAuthenticated: req.session.isLoggedIn });
 });
