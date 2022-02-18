@@ -48,7 +48,8 @@ exports.getSignup = (req, res, next) => {
         oldInput: {
             email: '',
             password: '',
-            confirmPassword: ''
+            confirmPassword: '',
+            username: ''
         },
         validationErrors: []
       });
@@ -81,7 +82,8 @@ exports.postLogin = (req, res, next) => {
                     errorMessage: 'Invalid email or password.',
                     oldInput: {
                         email: email,
-                        password: password
+                        password: password,
+                        username: username
                     },
                     validationErrors: []
                 });
@@ -103,7 +105,8 @@ exports.postLogin = (req, res, next) => {
                     errorMessage: 'Invalid email or password.',
                     oldInput: {
                         email: email,
-                        password: password
+                        password: password,
+                        username: username
                     },
                     validationErrors: []
                 });
@@ -123,6 +126,7 @@ exports.postLogin = (req, res, next) => {
 exports.postSignup = (req, res, next) => {
     const email = req.body.email;
     const password = req.body.password;
+    const username = req.body.username;
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         console.log(errors.array());
@@ -130,7 +134,7 @@ exports.postSignup = (req, res, next) => {
             path: '/signup',
             pageTitle: 'Signup',
             errorMessage: errors.array()[0].msg,
-            oldInput: { email: email, password: password, confirmPassword: req.body.confirmPassword },
+            oldInput: { email: email, password: password, confirmPassword: req.body.confirmPassword, username: username },
             validationErrors: errors.array()
           });
     }
@@ -138,6 +142,7 @@ exports.postSignup = (req, res, next) => {
         .hash (password, 12)
         .then(hashedPassword => {
             const user = new User({
+                username: username,
                 email: email,
                 password: hashedPassword,
                 cart: { items: [] }

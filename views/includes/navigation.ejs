@@ -2,9 +2,12 @@
 <header class="main-header">
     <button id="side-menu-toggle">Menu</button>
     <nav class="main-header__nav">
+        <div class="main-header__nav-partial">
+            <i class="icofont-book-alt icofont-2x"></i><h3>NewReaderBooks</h3>
         <ul class="main-header__item-list">
+            
             <li class="main-header__item">
-                <a class="<%= path === '/' ? 'active' : '' %>" href="/">Shop</a>
+                <a class="<%= path === '/' ? 'active' : '' %>" href="/">Home</a>
             </li>
             <li class="main-header__item">
                 <a class="<%= path === '/products' ? 'active' : '' %>" href="/products">Products</a>
@@ -25,7 +28,8 @@
                     </a>
                 </li>
             <% } %>
-        </ul>
+        </ul></div>
+        
         <ul class="main-header__item-list">
             <% if (!isAuthenticated) { %>
                 <li class="main-header__item">
